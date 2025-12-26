@@ -16,7 +16,7 @@ async function sendMessage() {
     if (!message) return;
 
     // Add your message to the window
-    window.innerHTML += `<p><b>You:</b> ${message}</p>`;
+    window.innerHTML += `<div class="message user"><b>You:</b> ${message}</div>`;
     input.value = '';
 
     // Send to FastAPI
@@ -24,7 +24,7 @@ async function sendMessage() {
     const data = await response.json();
 
     // Add AI response
-    window.innerHTML += `<p><b>AI:</b> ${data.reply}</p>`;
+    window.innerHTML += `<div class="message ai"><b>AI:</b> ${data.reply}</div>`;
     window.scrollTop = window.scrollHeight;
 }
 </script>

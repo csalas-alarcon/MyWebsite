@@ -17,17 +17,13 @@ my_templates = Jinja2Templates(directory="src/templates")
 async def home(request: Request):
     return my_templates.TemplateResponse("index.html", {"request": request})
 
-"""
-@my_app.post("/chat")
-async def chat(message: str):
-    response= await get_ai_response(message)
-    return {"reply": response}
-"""
-
 @my_app.get("/chat")
 async def chat_page(request: Request):
     return my_templates.TemplateResponse("chat.html", {"request": request})
 
+
 @my_app.post("/chat")
-async def chat_logic(message: str):
-    return {"reply": f"You said: {message}. (Ollama integration coming next!)"}
+async def chat(message: str):
+    response= await get_ai_response(message)
+    return {"reply": response}
+

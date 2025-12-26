@@ -9,6 +9,6 @@ async def get_ai_response(user_message: str):
         "stream": False
     }
 
-    async with httpx.AsyncClient as client:
+    async with httpx.AsyncClient() as client:
         response = await client.post(url, json=payload, timeout=30.0)
         return response.json().get("response")

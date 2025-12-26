@@ -1,0 +1,28 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Python Caches
+__pycache__/
+*.py[cod]
+*$py.class 
+
+#Environment Variables
+.env 
+
+# UV specific 
+.python-version 
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor specific 
+.vscode/
+
+# CachyOS ones
+*~
+.fuse_hidden* 
+.directory
+.Trash-*

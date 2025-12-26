@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Chat with My AI</h2>
+<div id="chat-window" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    </div>
+
+<input type="text" id="user-input" placeholder="Type something..." style="width: 80%;">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+async function sendMessage() {
+    const input = document.getElementById('user-input');
+    const window = document.getElementById('chat-window');
+    const message = input.value;
+    if (!message) return;
+
+    // Add your message to the window
+    window.innerHTML += `<p><b>You:</b> ${message}</p>`;
+    input.value = '';
+
+    // Send to FastAPI
+    const response = await fetch(`/chat?message=${encodeURIComponent(message)}`, { method: 'POST' });
+    const data = await response.json();
+
+    // Add AI response
+    window.innerHTML += `<p><b>AI:</b> ${data.reply}</p>`;
+    window.scrollTop = window.scrollHeight;
+}
+</script>
+{% endblock %}

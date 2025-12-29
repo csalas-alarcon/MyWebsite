@@ -6,4 +6,4 @@ uv sync
 
 # 2. Start the server
 echo "🌐 Starting FastAPI server..."
-uv run uvicorn src.main:my_app --reload
+uv run uvicorn src.main:app --reload

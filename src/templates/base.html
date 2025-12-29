@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <title>{% block title %}Salas' Assets{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
 </head>
 <body>
     <nav>
         <a href="/">Home</a> | 
-        <a href="/projects">Projects</a>
+        <a href="/projects">Projects</a> |
+        <a href="/chat">AI Chat</a>
     </nav>
 
     <main>
@@ -17,7 +18,9 @@
     </main>
 
     <footer>
-        <p>Perfect, Built by Carlos</p>
+        <p>This was brought to you by your neighbour and friend, Carlos Salas Alarcón</p>
+        <p>Check my <a href="https://github.com/csalas-alarcon">Github Account</a></p>
+        <p>Check my <a href="https://www.linkedin.com/in/carlos-salas-alarc%C3%B3n-45989a247/">Linkedin Account</a></p>
     </footer>
 </body>
 </html>

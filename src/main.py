@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from src.services.ai_service import get_ai_response
+from src.services.text_service import letter_counter
 
 # Initialize the Instance
 app = FastAPI(
@@ -29,9 +30,18 @@ async def projects_page(request: Request):
 async def chat_page(request: Request):
     return templates.TemplateResponse("chat.html", {"request": request})
 
+@app.get("/text")
+async def into_text(request: Request):
+    return templates.TemplateResponse("text.html", {"request": request})
+
 # POST Requests
 @app.post("/chat")
 async def chat(message: str):
     response= await get_ai_response(message)
+    return {"reply": response}
+
+@app.post("/text")
+async def text(message:str):
+    response= await letter_counter(message)
     return {"reply": response}
 

@@ -10,3 +10,11 @@ dependencies = [
     "jinja2>=3.1.6",
     "uvicorn[standard]>=0.40.0",
 ]
+
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+manifest-path = "src/letters/Cargo.toml"
+module-name = "quran_engine"

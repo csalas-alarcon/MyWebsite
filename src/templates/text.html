@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Welcome to our Rust Text Processor</h2>
+<p>Write whatever text in whatever language want:</p>
+
+
+<div id="chat-window" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    </div>
+<input type="text" id="user-input" placeholder="Type something..." style="width: 80%;">
+<button onclick="analyze()">Consult Patterns</button>
+
+<script>
+async function analyze() {
+    const input = document.getElementById('user-input');
+    const window = document.getElementById('chat-window');
+    const message = input.value;
+    if (!message) return;
+
+    // Add your message to the window
+    window.innerHTML += `<div class="message user"><b>You:</b> ${message}</div>`;
+    input.value = '';
+
+    // Send to FastAPI
+    console.log("This happened")
+    const response = await fetch(`/text?message=${message}`, { method: 'POST' });
+    const data = await response.json();
+
+    // Add AI response
+    window.innerHTML += `<div class="message ai"><b>AI:</b> ${data.reply}</div>`;
+    window.scrollTop = window.scrollHeight;
+}
+</script>
+
+{% endblock %}

@@ -1,7 +1,8 @@
-import httpx
+import json
 import quran_engine
 
 def letter_counter(message: str):
-    response= quran_engine.count_letters(message)
-    print(response)
-    return response.json().get("response")
+    resp= quran_engine.count_letters(message)
+    response= json.dumps(resp, indent=4)
+    return response
+

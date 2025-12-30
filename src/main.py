@@ -42,6 +42,6 @@ async def chat(message: str):
 
 @app.post("/text")
 async def text(message:str):
-    response= await letter_counter(message)
+    response= letter_counter(message)
     return {"reply": response}
 
